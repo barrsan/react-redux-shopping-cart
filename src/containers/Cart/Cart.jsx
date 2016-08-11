@@ -73,9 +73,9 @@ class Cart extends Component {
                 <CartRow
                   key={item.id}
                   product={item}
-                  removeProduct={(id) => this.props.removeProduct(id)}
-                  incrementProduct={(id) => this.props.incrementProduct(id)}
-                  decrementProduct={(id) => this.props.decrementProduct(id)}
+                  removeProduct={id => this.props.removeProduct(id)}
+                  incrementProduct={id => this.props.incrementProduct(id)}
+                  decrementProduct={id => this.props.decrementProduct(id)}
                 />
             ) : <div className={`${blockName}__emptyMessage`}>Cart is empty</div>
           }
