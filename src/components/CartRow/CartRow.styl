@@ -1,0 +1,47 @@
+@import "../../theme/base.styl"
+
+.cartRow
+  padding 10px
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+  align-items center
+  &:nth-child(even)
+    background $grayLight
+
+
+  &__title
+    size 200px auto
+    font-weight 700
+
+
+  &__quantity
+    display flex
+    flex-flow row wrap
+    align-items center
+
+
+  &__quantityNumber
+    margin 0 10px
+
+
+  &__btnQuantity
+    size 30px
+    font-size 1.4rem
+    color $white
+    background $gray
+    border 0
+
+
+  &__cost
+    size 100px auto
+    font-weight 700
+    text-align center
+
+
+  &__btnRemove
+    font-size .9rem
+    color $red
+    background transparent
+    border 0
+    border-bottom 1px solid $red

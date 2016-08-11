@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700italic,700&subset=latin,cyrillic')
+
+
+@import 'helpers/variables'
+@import 'helpers/common'
+@import 'helpers/mixins'
+@import 'helpers/fonts'
+@import 'helpers/optimize'
+@import 'helpers/typography'
+
+
+
+.main
+  margin 0 auto
+  width 70%
+
+.products
+  padding 50px 0
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+
+.product
+  size 33% auto
+  text-align center
+
+  &__img
+    size 100% auto
+    display block
+
+  &__title
+    margin 20px 0 10px
+    font-size 1.3rem
+
+  &__price
+    font-weight 700
+
+  &__addCart
+    margin 20px 0 0
+    padding 10px 20px
+    display inline-block
+    font-weight 700
+    text-decoration none
+    color $white
+    background $blue

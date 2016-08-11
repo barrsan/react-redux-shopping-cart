@@ -1,0 +1,89 @@
+@import "../../theme/base.styl"
+
+.cart
+  size 100% auto
+  margin 0 auto
+
+
+  &__btn
+    size 100% auto
+    padding 10px
+    cursor pointer
+    color $white
+    background $green
+    border 0
+
+
+  &__info
+    text-align center
+
+
+  &__total
+    margin 0 5px
+    font-weight 700
+
+
+  &__full
+    size 100%
+    position fixed
+    top 0
+    right 0
+    padding 20px
+    overflow-y auto
+    max-width 700px
+    background $white
+    box-shadow -3px 0 10px rgba(0, 0, 0, .1)
+    animation .3s slideInRight both
+    &_hide
+      animation .3s slideOutRight both
+
+
+  &__panel
+    margin 0 0 30px
+    display flex
+    flex-flow row wrap
+    justify-content space-between
+    align-items center
+    &_bottom
+      margin 20px 0 0
+      padding 20px 0 0
+      text-align right
+      border-top 1px solid $gray
+
+
+  &__title
+    font-size 18px
+    font-weight 700
+
+
+  &__btnClose
+    font-size .9rem
+    background transparent
+    border 0
+    border-bottom 1px solid $black
+
+
+  &__checkout
+    padding 10px
+    display block
+    font-size 1.1rem
+    font-weight 700
+    text-decoration none
+    color $white
+    background $green
+
+
+@keyframes slideInRight
+  from
+    transform translate3d(100%, 0, 0)
+    visibility visible
+  to
+    transform translate3d(0, 0, 0)
+
+
+@keyframes slideOutRight
+  from
+    transform translate3d(0, 0, 0)
+  to
+    visibility hidden
+    transform translate3d(100%, 0, 0)

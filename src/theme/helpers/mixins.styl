@@ -1,0 +1,70 @@
+// Clear the float on any element.
+clearfix()
+  &:after
+    display table
+    clear both
+    content ''
+
+// Fix no working `-webkit-text-size-adjust: 100%;` in Android.
+fix-text-size-adjust()
+  background-image linear-gradient(transparent, transparent)
+
+// Set element size
+size($width, $height = $width)
+  width $width
+  height $height
+
+// Set margin on left & right
+margin-x($margin)
+  margin-left $margin
+  margin-right $margin
+
+// Set margin on top & bottom
+margin-y($margin)
+  margin-top $margin
+  margin-bottom $margin
+
+// Set pading on left & right
+padding-x($padding)
+  padding-left $padding
+  padding-right $padding
+
+// Set padding on top & bottom
+padding-y($padding)
+  padding-top $padding
+  padding-bottom $padding
+  
+
+inline-block($position)
+  display inline-block
+  vertical-align $position
+
+
+input-placeholder-uppercase($color)
+  &::-webkit-input-placeholder
+    text-transform uppercase
+    color $color
+  &::-moz-placeholder
+    text-transform uppercase
+    color $color
+  &:-ms-input-placeholder
+    text-transform uppercase
+    color $color
+  &:-moz-placeholder
+    text-transform uppercase
+    color $color
+
+
+transition-all($duration)
+  transition all $duration ease-out 0s
+
+
+background-linear-gradient(startPoint, startColor, startInterval, endColor, endInterval, deprecatedWebkitStartPoint = false, deprecatedWebkitEndPoint = false)
+  background-color startColor
+  if deprecatedWebkitStartPoint && deprecatedWebkitEndPoint
+    background-image -webkit-gradient(linear, deprecatedWebkitStartPoint, deprecatedWebkitEndPoint, color-stop(startInterval, startColor), color-stop(endInterval, endColor))
+  background-image -webkit-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -moz-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -ms-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -o-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image linear-gradient(startPoint, startColor startInterval, endColor endInterval)  
