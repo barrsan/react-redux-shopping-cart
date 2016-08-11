@@ -30,7 +30,7 @@ class Cart extends Component {
 
   componentDidMount() {
     this.props.fetchProducts();
-    this.props.ee.on('addCart', this.listener = (id) => {
+    this.props.ee.on('addCart', this.listener = id => {
       this.props.addProduct(id);
     });
   }
