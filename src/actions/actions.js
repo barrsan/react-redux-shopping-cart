@@ -35,28 +35,36 @@ export function fetchProducts() {
 
 export function addProduct(id) {
   return (dispatch) => {
-    setTimeout(() => {
-      const fdProductIndex = findIndex(FAKE_DATA, (p) => p.id === id);
-      const product = FAKE_DATA[fdProductIndex];
-      const cart = JSON.parse(localStorage.cart);
-      const productIndex = findIndex(cart.entities.products, (p) => p.id === product.id);
-      if (productIndex !== -1) {
-        cart.entities.products[productIndex].cost += product.cost;
-        cart.entities.products[productIndex].quantity += product.quantity;
-      } else {
-        cart.entities.products.push(product);
-      }
-      cart.counter += product.quantity;
+    const cart = JSON.parse(localStorage.cart);
+    const productIndex = findIndex(cart.entities.products, (p) => p.id === id);
+    if (productIndex !== -1) {
+      const product = cart.entities.products[productIndex];
+      product.cost += product.price;
+      product.quantity += 1;
+      cart.counter += 1;
       cart.total += product.price;
       localStorage.setItem('cart', JSON.stringify(cart));
-
       dispatch({
         type: ADD_PRODUCT,
         payload: product,
       });
-    }, 200);
+    } else {
+      setTimeout(() => {
+        const fdProductIndex = findIndex(FAKE_DATA, (p) => p.id === id);
+        const newProduct = FAKE_DATA[fdProductIndex];
+        cart.entities.products.push(newProduct);
+        cart.counter += 1;
+        cart.total += newProduct.price;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        dispatch({
+          type: ADD_PRODUCT,
+          payload: newProduct,
+        });
+      }, 200);
+    }
   };
 }
+
 
 export function removeProduct(id) {
   const cart = JSON.parse(localStorage.cart);

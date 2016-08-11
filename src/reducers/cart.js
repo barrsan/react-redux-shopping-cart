@@ -29,16 +29,20 @@ export default function (state = INITIAL_STATE, action) {
     case ADD_PRODUCT: {
       const { entities, counter, total } = state;
       const product = action.payload;
-      const productIndex = findIndex(state.entities.products, (p) => p.id === product.id);
+      const productIndex = findIndex(
+        state.entities.products, (p) => p.id === product.id
+      );
 
       if (productIndex !== -1) {
-        product.cost += entities.products[productIndex].cost;
-        product.quantity += entities.products[productIndex].quantity;
         return { ...state,
           entities: {
             products: [
               ...entities.products.slice(0, productIndex),
-              product,
+              {
+                ...entities.products[productIndex],
+                cost: entities.products[productIndex].cost + entities.products[productIndex].price,
+                quantity: entities.products[productIndex].quantity + 1,
+              },
               ...entities.products.slice(productIndex + 1)],
           },
           counter: counter + 1,
