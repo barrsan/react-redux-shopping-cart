@@ -10,7 +10,6 @@ export default function (initialState) {
   /* eslint-enable no-undef */
     const logger = createLogger();
     store = compose(
-      applyMiddleware(thunk),
       applyMiddleware(thunk, logger),
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )(createStore);
